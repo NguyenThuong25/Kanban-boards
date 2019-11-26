@@ -1,0 +1,12 @@
+.header {
+  color: white;
+  text-align: center;
+  margin: 0 auto;
+  padding: 20px 0px 0px 0px;
+  height: 50px;
+  width: 100%;
+  background-color: #4b4b94;
+}
+.list {
+  display: flex;
+}

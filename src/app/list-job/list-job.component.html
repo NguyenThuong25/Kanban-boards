@@ -1,0 +1,67 @@
+<div class="add-list">
+  <div cdkDropListGroup class="add-list">
+    <mat-card class="card-list " *ngFor="let l of list; let index = index">
+      <div class="example-container">
+        <div class="delete-list">
+          <h2>{{ l.namelist }} ({{ l.listJob.length }}/{{ l.limitJob }}job)</h2>
+          <button
+            mat-button
+            color="accent"
+            class="btn-delete"
+            (click)="removeList(index)"
+          >
+            <i class="material-icons">delete </i>
+          </button>
+        </div>
+        <div
+          cdkDropList
+          [cdkDropListData]="l.listJob"
+          class="example-list"
+          (cdkDropListDropped)="drop($event)"
+        >
+          <div class="box example-box" *ngFor="let i of l.listJob" cdkDrag>
+            <div class="name-job">{{ i }}</div>
+            <button
+              mat-button
+              color="accent"
+              class="btn-delete"
+              (click)="removeJob(i)"
+            >
+              <i class="material-icons">delete </i>
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <mat-form-field class="example-full-width">
+        <textarea matInput placeholder="new job" [(ngModel)]="l.id"></textarea>
+      </mat-form-field>
+      <button mat-raised-button color="primary" (click)="addJob(index)">
+        add
+      </button>
+
+      <div>
+        <mat-form-field class="example-full-width">
+          <textarea
+            matInput
+            placeholder="giới hạn công việc"
+            [(ngModel)]="l.limitJob"
+          ></textarea>
+        </mat-form-field>
+      </div>
+    </mat-card>
+  </div>
+
+  <div>
+    <mat-form-field class="example-full-width">
+      <textarea
+        matInput
+        placeholder="new list"
+        [(ngModel)]="namelist"
+      ></textarea>
+    </mat-form-field>
+    <button mat-raised-button color="primary" (click)="addList()">
+      add
+    </button>
+  </div>
+</div>
